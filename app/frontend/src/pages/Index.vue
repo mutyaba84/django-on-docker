@@ -43,16 +43,16 @@
           <div class="string">
             <div
               class="card"
-              v-for="Variable in Variables"
-              v-if="Variable.status === 'String'"
-              v-bind:key="Variable.id"
+              v-for="variable in variables"
+              v-if="variable.status === 'String'"
+              v-bind:key="variable.id"
             >
-              <div class="card-content">{{ Variable.name }}</div>
+              <div class="card-content">{{ variable.name }}</div>
 
               <footer class="card-footer">
                 <a
                   class="card-footer-item"
-                  @click="setStatus(Variable.id, 'boolean')"
+                  @click="setStatus(variable.id, 'boolean')"
                   >boolean</a
                 >
               </footer>
@@ -65,16 +65,16 @@
           <div class="boolean">
             <div
               class="card"
-              v-for="Variable in Variables"
-              v-if="Variable.type === 'boolean'"
-              v-bind:key="Variable.id"
+              v-for="variable in variables"
+              v-if="variable.type === 'boolean'"
+              v-bind:key="variable.id"
             >
-              <div class="card-content">{{ Variable.name }}</div>
+              <div class="card-content">{{ variable.name }}</div>
 
               <footer class="card-footer">
                 <a
                   class="card-footer-item"
-                  @click="setType(Variable.id, 'string')"
+                  @click="setType(variable.id, 'string')"
                   >String</a
                 >
               </footer>
@@ -89,21 +89,21 @@
 <script>
 const API_URL = 'http://127.0.0.1:8000/';
 import axios from 'axios';
-import { defineComponent, ref } from '@vue/composition-api';
+
 export default {
   name: 'Home',
   data() {
     return {
-      Variables: [],
+      Variable: [],
       name: 'name',
-      Variable: 'string'
+      type: 'string'
     };
   },
   mounted() {
     this.getVariable();
   },
   methods: {
-    getVariables() {
+    getVariable() {
       axios({
         method: 'get',
         url: API_URL + 'Variable/',
@@ -111,7 +111,7 @@ export default {
           username: 'admin',
           password: 'After7'
         }
-      }).then(response => (this.Variable = response.data));
+      }).then(response => (this.Variables = response.data));
     },
     addVariable() {
       if (this.name) {
@@ -130,8 +130,8 @@ export default {
           .then(response => {
             let newVariable = {
               id: response.data.id,
-              name: this.name,
-              type: this.status
+              Variable: this.Variable,
+              type: this.type
             };
             this.Variable.push(newVariable);
             this.name = 'name';
@@ -143,8 +143,8 @@ export default {
       }
     },
     setStatus(Variable_id, type) {
-      const Variable = this.Variable.filter(
-        Variable => Variable.id === Variable_id
+      const Variable = this.variable.filter(
+        variable => variable_id.id === variable_id
       )[0];
       const name = Variable.name;
       axios({
