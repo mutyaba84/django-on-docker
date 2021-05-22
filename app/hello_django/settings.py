@@ -19,14 +19,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-#SECRET_KEY = os.environ.get("")
+SECRET_KEY = 'django-insecure-n+80_4ele7y2un#7$t5_j1^o8-&yz'
 
-DEBUG = int(os.environ.get("DEBUG", default=0))
 
+#DEBUG = int(os.environ.get("DEBUG", default=0))
+DEBUG = True
 # 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
 #ALLOWED_HOSTS = os.environ.get("DJANG.split("")O_ALLOWED_HOSTS")
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS")
+ALLOWED_HOSTS = ('127.0.0.1: 8000')
 
 
 # Application definition
