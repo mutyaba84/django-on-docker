@@ -20,8 +20,5 @@ class BooleanValue(Variable):
     Value = models.BooleanField(default=False)
 
 
-class StringValue(models.Model):
-    name = models.CharField(max_length=55)
-
-    def __str__(self):
-        return self.name
+class StringValue(Variable):
+    Value = models.CharField(max_length=55)

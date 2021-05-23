@@ -21,13 +21,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'django-insecure-n+80_4ele7y2un#7$t5_j1^o8-&yz'
 
-
-#DEBUG = int(os.environ.get("DEBUG", default=0))
-DEBUG = True
+DEBUG = int(os.environ.get("DEBUG", default=1))
+#DEBUG = True
 # 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
-#ALLOWED_HOSTS = os.environ.get("DJANG.split("")O_ALLOWED_HOSTS")
-ALLOWED_HOSTS = ('127.0.0.1', '0.0.0.0:0000', '127.0.0.1:8000')
+#ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS.")
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS")
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 
